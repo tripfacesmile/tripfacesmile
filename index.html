@@ -160,60 +160,60 @@
   }
 }
 
-@keyframes glitch3 {
-  0% {
-    transform: none;
-    opacity: 0;
+  @keyframes glitch3 {
+    0% {
+      transform: none;
+      opacity: 0;
+    }
+    7% {
+      transform: translate(2px, 3px);
+      opacity: 0.5;
+    }
+    10% {
+      transform: none;
+      opacity: 0;
+    }
+    27% {
+      transform: none;
+      opacity: 0;
+    }
+    30% {
+      transform: translate(5px, 2px);
+      opacity: 0.5;
+    }
+    35% {
+      transform: none;
+      opacity: 0;
+    }
+    52% {
+      transform: none;
+      opacity: 0;
+    }
+    55% {
+      transform: translate(5px, 1px);
+      opacity: 0.5;
+    }
+    50% {
+      transform: none;
+      opacity: 0;
+    }
+    72% {
+      transform: none;
+      opacity: 0;
+    }
+    75% {
+      transform: translate(2px, 6px);
+      opacity: 0.5;
+    }
+    80% {
+      transform: none;
+      opacity: 0;
+    }
+    100% {
+      transform: none;
+      opacity: 0;
+    }
   }
-  7% {
-    transform: translate(2px, 3px);
-    opacity: 0.5;
-  }
-  10% {
-    transform: none;
-    opacity: 0;
-  }
-  27% {
-    transform: none;
-    opacity: 0;
-  }
-  30% {
-    transform: translate(5px, 2px);
-    opacity: 0.5;
-  }
-  35% {
-    transform: none;
-    opacity: 0;
-  }
-  52% {
-    transform: none;
-    opacity: 0;
-  }
-  55% {
-    transform: translate(5px, 1px);
-    opacity: 0.5;
-  }
-  50% {
-    transform: none;
-    opacity: 0;
-  }
-  72% {
-    transform: none;
-    opacity: 0;
-  }
-  75% {
-    transform: translate(2px, 6px);
-    opacity: 0.5;
-  }
-  80% {
-    transform: none;
-    opacity: 0;
-  }
-  100% {
-    transform: none;
-    opacity: 0;
-  }
-}
   .body-bg{
     background:url('Smile.jpg') center;
     background-size: 20px;
@@ -226,10 +226,67 @@
       background-size: 150px;
     }
   }
+@keyframes invertImg {
+  0% {
+    -webkit-filter: invert(0%);
+    filter: invert(0%);
+  }
+  7% {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+  }
+  10% {
+    -webkit-filter: invert(0%);
+    filter: invert(0%);
+  }
+  27% {
+    -webkit-filter: invert(0%);
+    filter: invert(0%);
+  }
+  30% {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+  }
+  35% {
+    -webkit-filter: invert(0%);
+    filter: invert(0%);
+  }
+  52% {
+    -webkit-filter: invert(0%);
+    filter: invert(0%);
+  }
+  55% {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+  }
+  50% {
+    -webkit-filter: invert(0%);
+    filter: invert(0%);
+  }
+  72% {
+    -webkit-filter: invert(0%);
+    filter: invert(0%);
+  }
+  75% {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+  }
+  80% {
+    -webkit-filter: invert(0%);
+    filter: invert(0%);
+  }
+  100% {
+    -webkit-filter: invert(0%);
+    filter: invert(0%);
+  }
+}
   .glitch-container{
     height: 100px;
     position: relative;
    }
+   .glitch-image{
+     animation: invertImg 2.5s infinite;
+    }
   </style>
 </head>
 
@@ -246,7 +303,7 @@
       <h2>Upcoming Shows</h2>
       <h2 class="rainbow-text">Upcoming Shows</h2>
     </div>
-    <img style="display:block;margin:0 auto;" src="modular-massive-flyer-sm.jpg" height="600" width="480" />
+    <img class="glitch-image" style="display:block;margin:0 auto;" src="modular-massive-flyer-sm.jpg" height="600" width="480" />
   </div>
 </body>
 
