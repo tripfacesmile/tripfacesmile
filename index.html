@@ -287,22 +287,20 @@
    .glitch-image{
      animation: invertImg 1.5s infinite;
     }
-    .glitchy-images{
-     position: relative; 
-    }
-    .glitchy-images img {
-      position: absolute;
-      /*
-      left: -1rem;
-      top: -1rem;
-      width: calc(100% + 2rem); */
-    }
 
-    .glitchy-images img:nth-child(1) {
+    img:nth-child(1) {
+  position: absolute;
+  left: -1rem;
+  top: -1rem;
+  width: calc(100% + 2rem);
       filter: url(#transmissionerror);
     }
 
-    .glitchy-images img:nth-child(2) {
+    img:nth-child(2) {
+  position: absolute;
+  left: -1rem;
+  top: -1rem;
+  width: calc(100% + 2rem);
       filter: grayscale(100%) contrast(1000%);
       mix-blend-mode: multiply;
       // display: none;
@@ -317,14 +315,17 @@
       <h2>Anti-social media</h2>
       <h2 class="rainbow-text">Anti-social media</h2>
     </div>
-    <p style="background:black;padding:5px 10px;margin: 0;"><a href="https://odysee.com/@TripFaceSmile.com" target="_blank" title="TripFaceSmile.com on odysee.com"><img src="odysee_white-logo.png" height="50" width="167" /></a></p>
+    <p class="anti-social" style="background:black;padding:5px 10px;margin: 0;">
+      <a href="https://odysee.com/@TripFaceSmile.com" target="_blank" title="TripFaceSmile.com on odysee.com">
+        <img src="odysee_white-logo.png" height="50" width="167" />
+        <img src="odysee_white-logo.png" height="50" width="167" />
+      </a>
+    </p>
     <div class="glitch-container">
       <h2>Upcoming Shows</h2>
       <h2>Upcoming Shows</h2>
       <h2 class="rainbow-text">Upcoming Shows</h2>
     </div>
-    <div class="glitchy-images">
-      <img class="glitch-image" style="display:block;margin:0 auto;" src="modular-massive-flyer-sm.jpg" height="600" width="480" />
       <img class="glitch-image" style="display:block;margin:0 auto;" src="modular-massive-flyer-sm.jpg" height="600" width="480" />
       <svg>
         <filter id="transmissionerror">
@@ -340,7 +341,6 @@
           <feDisplacementMap in="colormatrix2" in2="colomatrix4" scale="15" xChannelSelector="R" yChannelSelector="A" result="displacementMap" />
         </filter>
       </svg>
-    </div>
   </div>
   
 </body>
