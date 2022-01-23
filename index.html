@@ -14,13 +14,25 @@
 
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <style>
+  .rainbow-text {
+    background: red;
+    background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
+    background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 20vw;
+  }
+  </style>
 </head>
 
 <body style="background:url('Smile.jpg') center;background-size:50px;">
   <div style="width:600px;margin:0 auto;padding:10px 100px;background:url('rig.jpg') center;">
-    <h2>Anti-social media</h2>
+    <h2 class="rainbow-text">Anti-social media</h2>
     <p><a href="https://odysee.com/@TripFaceSmile.com" target="_blank" title="TripFaceSmile.com on odysee.com"><img src="odysee_white-logo.png" height="50" width="167" /></a></p>
-    <h2>Upcoming Shows</h2>
+    <h2 class="rainbow-text">Upcoming Shows</h2>
     <img style="display:block;margin:0 auto;" src="modular-massive-flyer-sm.jpg" height="600" width="480" />
   </div>
 </body>
