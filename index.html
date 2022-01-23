@@ -30,10 +30,22 @@
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
   }
+  .body-bg{
+    background:url('Smile.jpg') center;
+    background-size:1px;
+    animation: myanim 5s infinite;
+  }
+  @keyframes myanim {
+    20% {
+      background-color: maroon;
+      background-position: bottom right;
+      background-size: 200px;
+    }
+  }
   </style>
 </head>
 
-<body style="background:url('Smile.jpg') center;background-size:50px;">
+<body class="body-bg">
   <div style="width:600px;margin:0 auto;">
     <h2 class="rainbow-text">Anti-social media</h2>
     <p style="background:black;padding:5px;"><a href="https://odysee.com/@TripFaceSmile.com" target="_blank" title="TripFaceSmile.com on odysee.com"><img src="odysee_white-logo.png" height="50" width="167" /></a></p>
