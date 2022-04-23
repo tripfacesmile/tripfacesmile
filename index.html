@@ -15,25 +15,6 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="Tripfacesmile.com-logo-curved-text.png">
   <style>
-  .rainbow-text {
-    background: red;
-    background: -webkit-linear-gradient(left, red, orange , yellow, green, cyan, blue, violet);
-    background: -o-linear-gradient(right, red, orange, yellow, green, cyan, blue, violet);
-    background: -moz-linear-gradient(right, red, orange, yellow, green, cyan, blue, violet);
-    background: linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-  }
-  .rainbow-text.rev {
-    background: red;
-    background: -webkit-linear-gradient(right, red, orange , yellow, green, cyan, blue, violet);
-    background: -o-linear-gradient(left, red, orange, yellow, green, cyan, blue, violet);
-    background: -moz-linear-gradient(left, red, orange, yellow, green, cyan, blue, violet);
-    background: linear-gradient(to left, red, orange , yellow, green, cyan, blue, violet);
-    -webkit-background-clip: text;
-  }
   h2{
     text-align: center;
     font-size: 75px;
@@ -43,289 +24,14 @@
     width: 200px;
     max-width: 100%;
     white-space: nowrap;
+    font-weight: normal;
   }
-
- h2:nth-child(3){
-  animation: glitch1 2.5s infinite;
- }
-    
-  h2:nth-child(1){
-    color: #67f3da;
-    animation: glitch1 2.5s infinite;
-  }
-    
-  h2:nth-child(2) {
-    color: #f16f6f;
-    animation: glitch2 2.5s infinite;
-  } 
-    
-
- .second h2:nth-child(3){
-  animation: glitch1 1.5s infinite;
- }
-    
-  .second h2:nth-child(1){
-    animation: glitch1 1.5s infinite;
-  }
-    
-  .second h2:nth-child(2) {
-    animation: glitch2 1.5s infinite;
-  } 
-/*Keyframes*/
-
-@keyframes glitch1 {
-  0% {
-    transform: none;
-    opacity: 1;
-  }
-  7% {
-    transform: skew(-0.5deg, -0.9deg);
-    opacity: 0.75;
-  }
-  10% {
-    transform: none;
-    opacity: 1;
-  }
-  27% {
-    transform: none;
-    opacity: 1;
-  }
-  30% {
-    transform: skew(0.8deg, -0.1deg);
-    opacity: 0.75;
-  }
-  35% {
-    transform: none;
-    opacity: 1;
-  }
-  52% {
-    transform: none;
-    opacity: 1;
-  }
-  55% {
-    transform: skew(-1deg, 0.2deg);
-    opacity: 0.75;
-  }
-  50% {
-    transform: none;
-    opacity: 1;
-  }
-  72% {
-    transform: none;
-    opacity: 1;
-  }
-  75% {
-    transform: skew(0.4deg, 1deg);
-    opacity: 0.75;
-  }
-  80% {
-    transform: none;
-    opacity: 1;
-  }
-  100% {
-    transform: none;
-    opacity: 1;
-  }
-}
-
-@keyframes glitch2 {
-  0% {
-    transform: none;
-    opacity: 0;
-  }
-  7% {
-    transform: translate(-2px, -3px);
-    opacity: 0.5;
-  }
-  10% {
-    transform: none;
-    opacity: 0;
-  }
-  27% {
-    transform: none;
-    opacity: 0;
-  }
-  30% {
-    transform: translate(-5px, -2px);
-    opacity: 0.5;
-  }
-  35% {
-    transform: none;
-    opacity: 0;
-  }
-  52% {
-    transform: none;
-    opacity: 0;
-  }
-  55% {
-    transform: translate(-5px, -1px);
-    opacity: 0.5;
-  }
-  50% {
-    transform: none;
-    opacity: 0;
-  }
-  72% {
-    transform: none;
-    opacity: 0;
-  }
-  75% {
-    transform: translate(-2px, -6px);
-    opacity: 0.5;
-  }
-  80% {
-    transform: none;
-    opacity: 0;
-  }
-  100% {
-    transform: none;
-    opacity: 0;
-  }
-}
-
-  @keyframes glitch3 {
-    0% {
-      transform: none;
-      opacity: 0;
-    }
-    7% {
-      transform: translate(2px, 3px);
-      opacity: 0.5;
-    }
-    10% {
-      transform: none;
-      opacity: 0;
-    }
-    27% {
-      transform: none;
-      opacity: 0;
-    }
-    30% {
-      transform: translate(5px, 2px);
-      opacity: 0.5;
-    }
-    35% {
-      transform: none;
-      opacity: 0;
-    }
-    52% {
-      transform: none;
-      opacity: 0;
-    }
-    55% {
-      transform: translate(5px, 1px);
-      opacity: 0.5;
-    }
-    50% {
-      transform: none;
-      opacity: 0;
-    }
-    72% {
-      transform: none;
-      opacity: 0;
-    }
-    75% {
-      transform: translate(2px, 6px);
-      opacity: 0.5;
-    }
-    80% {
-      transform: none;
-      opacity: 0;
-    }
-    100% {
-      transform: none;
-      opacity: 0;
-    }
-  }
-  .body-bg{
+  .body-bg-2{
     background:url('Tripfacesmile.com-logo-curved-text.png') center;
-    background-size: 20px;
-    animation: myanim 5s infinite;
+    background-size: 300px;
+    padding: 0;
+    margin: 0;
   }
-  @keyframes myanim {
-    20% {
-      background-color: black;
-      background-position: bottom right;
-      background-size: 150px;
-    }
-  }
-@keyframes invertImg {
-  0% {
-    -webkit-filter: invert(0%);
-    filter: invert(0%);
-  }
-  7% {
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
-  }
-  10% {
-    -webkit-filter: invert(0%);
-    filter: invert(0%);
-  }
-  27% {
-    -webkit-filter: invert(0%);
-    filter: invert(0%);
-  }
-  30% {
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
-  }
-  35% {
-    -webkit-filter: invert(0%);
-    filter: invert(0%);
-  }
-  52% {
-    -webkit-filter: invert(0%);
-    filter: invert(0%);
-  }
-  55% {
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
-  }
-  50% {
-    -webkit-filter: invert(0%);
-    filter: invert(0%);
-  }
-  72% {
-    -webkit-filter: invert(0%);
-    filter: invert(0%);
-  }
-  75% {
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
-  }
-  80% {
-    -webkit-filter: invert(0%);
-    filter: invert(0%);
-  }
-  100% {
-    -webkit-filter: invert(0%);
-    filter: invert(0%);
-  }
-}
-  .glitch-container{
-    height: 100px;
-    position: relative;
-   }
-   .glitch-image{
-     animation: invertImg 1.5s infinite;
-    }
-
-    img:nth-child(1) {
-      filter: url(#transmissionerror);
-    }
-
-    img:nth-child(2) {
-      filter: grayscale(100%) contrast(1000%);
-      mix-blend-mode: multiply;
-      // display: none;
-    }
-    .body-bg-2{
-      background:url('Tripfacesmile.com-logo-curved-text.png') center;
-      background-size: 300px;
-      padding: 0;
-      margin: 0;
-    }
   </style>
 </head>
 
@@ -334,8 +40,6 @@
   <h1 style="display:none">tripfacesmile.com</h1>
   <div style="width:345px;margin:0 auto;">
     <div class="glitch-container">
-      <h2>Online</h2>
-      <h2>Online</h2>
       <h2>Online</h2>
     </div>
     <p class="anti-social" style="background:black;padding:5px 10px;margin: 0;">
@@ -349,8 +53,6 @@
       </a>
     </p>
     <div class="glitch-container second">
-      <h2>Events</h2>
-      <h2>Events</h2>
       <h2>Events</h2>
     </div>
       <div style="margin-bottom:20px"><a href="https://skywaytheatre.com/event/marauda/" style="display:block" target="_blank" title="2022-04-23 Marauda"><img src="Marauda4x5SupportWEB.png" width="345" height="431" style="display:block;margin:0 auto;" /></a></div>
