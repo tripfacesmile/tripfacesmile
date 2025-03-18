@@ -110,33 +110,30 @@
   <h3>PlayerModel</h3>
   <pre>
   <code>
-  [
-    {
-      name: String,
-      id: String,
-      points: Int,
-      haikus: Array[HaikuModel]
-    }
-  ]
+  {
+    name: String,
+    id: String,
+    points: Int,
+    haikus: Array[HaikuModel]
+  }
   </code>
   </pre>
   <h3>RoundModel</h3>
   <pre>
   <code>
-  [
-    {
-      round: Int
-    }
-  ]
+  {
+    round: Int
+  }
   </code>
   </pre>
   <h3>MatchModel</h3>
   <pre>
   <code>
-  [
+  {
+    gameConfig: GameConfigModel
     players: [PlayerModel],
     rounds: [RoundModel]
-  ]
+  }
   </code>
   </pre>
   <h3>HaikuModel</h3>
