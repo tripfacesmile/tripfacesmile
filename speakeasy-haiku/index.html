@@ -26,12 +26,52 @@
 
 <body>
   <h1>Speakeasy Haiku - Prototype Landing Page</h1>
+  <h2> Technology references</h2>
   <ul>
     <li>WebRTC demo: <a href="https://www.scaledrone.com/blog/webrtc-chat-tutorial/" target="_blank">scaledrone.com/blog/webrtc-chat-tutorial</a></li>
     <li><a href="https://www.scaledrone.com/" target="_blank">scaledrone</a> - Free for up to 20 concurrent users and 100,000 daily events</li>
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance" target="_blank">Web/API/SpeechSynthesisUtterance</a></li>
     <li><a href="https://jsfiddle.net/holanicozerpa/4h2sf9gL/6/" target="_blank">SpeechSynthesisUtterance example</a></li>
   </ul>
+
+  <h2>Game flow</h2>
+  <ol>
+    <li>Host creates new game</li>
+    <li>Generate unique room ID</li>
+  <li>Share room ID </li>
+  <li>
+    <p>Host starts match</</p>
+    <p><i>(n rounds - repeat)</i></p>
+    <ol>
+      <li>Determine player order</li>
+      <li>Begin round</li>
+      <li>Reveal winner or, start next round</li>
+      <li>Reveal icons, from allowed list</li>
+      <li>Delegate two words to each player, from allowed list</li>
+      <li>First haiku complete</li>
+      <li>Begin countdown for all players</li>
+      <li>
+        <p><i>(n players - repeat)</i></p>
+        <ol>
+          <li>Haiku read outloud</li>
+          <li>Next player guesses used word</li>
+          <li>Award point, or allow next player to guess</li>
+        </ol>
+      </li>
+      <li>
+        <p><i>(n players - repeat)</i></p>
+        <ol>
+          <li>Player votes for best haiku</li>
+          <li>Award point</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>End rounds</li>
+  <li>Cleanup, remove icons and words from allowed lists</li>
+  <li>End match</li>
+  <li>match cleanup, reset all data</li>
+</ol>
   <!-- your content here... -->
   <!--<script src="js/scripts.js"></script>-->
 </body>
