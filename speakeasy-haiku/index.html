@@ -96,16 +96,39 @@
   ]
   </code>
   </pre>
+  <h3>MessageActionModel</h3>
+  <pre>
+  <code>
+    {
+      action: String,
+      data: Json
+    }
+  </code>
+  </pre>
   <h3>HostMessageModel</h3>
   <pre>
   <code>
-  TODO
+    {
+      id: String,
+      actions: Array[MessageActionModel]
+    }
   </code>
   </pre>
   <h3>ClientMessageModel</h3>
   <pre>
   <code>
-  TODO
+    {
+      id: String,
+      actions: Array[MessageActionModel]
+    }
+  </code>
+  </pre>
+  <h3>MessageReceivedModel</h3>
+  <pre>
+  <code>
+    {
+      id: String
+    }
   </code>
   </pre>
   <h3>PlayerModel</h3>
