@@ -96,6 +96,18 @@
     ]
     </code>
   </pre>
+
+
+  <h3>MatchModel</h3>
+  <pre>
+    <code>
+      {
+        gameConfig: GameConfigModel
+        players: [PlayerModel],
+        rounds: [RoundModel]
+      }
+    </code>
+  </pre>
   
   <h3>PlayerModel</h3>
   <pre>
@@ -114,19 +126,9 @@
     <code>
       {
         round: Int,
+        selectedIcon: Array[IconModel],
         remainingIcons: Array[IconModel],
         remainingWords: Array[WordModel]
-      }
-    </code>
-  </pre>
-  
-  <h3>MatchModel</h3>
-  <pre>
-    <code>
-      {
-        gameConfig: GameConfigModel
-        players: [PlayerModel],
-        rounds: [RoundModel]
       }
     </code>
   </pre>
@@ -139,12 +141,15 @@
       player: String,
       title: String,
       words: Array[String],
-      playerWords: Array[WordModel],
+      playerWords: Array[WordModel]
     }
     </code>
   </pre>
 
   <h2>Communcation Models</h2>
+  <p>Game host manages all data, and will not expose data to clients. Clients request data, host determines what data to send.</p>
+
+  
   <h3>MessageActionModel</h3>
   <pre>
     <code>
