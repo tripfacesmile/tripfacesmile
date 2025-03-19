@@ -43,127 +43,155 @@
   <ol>
     <li>Host creates new game</li>
     <li>Generate unique room ID</li>
-  <li>Share room ID </li>
-  <li>
-    <p>Host starts match</</p>
-    <p><i>(n rounds - repeat)</i></p>
-    <ol>
-      <li>Determine player order</li>
-      <li>Begin round</li>
-      <li>Reveal winner or, start next round</li>
-      <li>Reveal icons, from allowed list</li>
-      <li>Delegate two words to each player, from allowed list</li>
-      <li>First haiku complete</li>
-      <li>Begin countdown for all players</li>
-      <li>
-        <p><i>(n players - repeat)</i></p>
-        <ol>
-          <li>Haiku read outloud</li>
-          <li>Next player guesses used word</li>
-          <li>Award point, or allow next player to guess</li>
-        </ol>
-      </li>
-      <li>
-        <p><i>(n players - repeat)</i></p>
-        <ol>
-          <li>Player votes for best haiku</li>
-          <li>Award point</li>
-        </ol>
-      </li>
-      <li>End round</li>
-      <li>Cleanup, remove icons and words from allowed lists</li>
-    </ol>
-  </li>
-  <li>End match</li>
-  <li>match cleanup, reset all data</li>
-</ol>
-  <!-- your content here... -->
-  <!--<script src="js/scripts.js"></script>-->
+    <li>Share room ID </li>
+    <li>
+      <p>Host starts match</</p>
+      <p><i>(n rounds - repeat)</i></p>
+      <ol>
+        <li>Determine player order</li>
+        <li>Begin round</li>
+        <li>Reveal winner or, start next round</li>
+        <li>Reveal icons, from allowed list</li>
+        <li>Delegate two words to each player, from allowed list</li>
+        <li>First haiku complete</li>
+        <li>Begin countdown for all players</li>
+        <li>
+          <p><i>(n players - repeat)</i></p>
+          <ol>
+            <li>Haiku read outloud</li>
+            <li>Next player guesses used word</li>
+            <li>Award point, or allow next player to guess</li>
+          </ol>
+        </li>
+        <li>
+          <p><i>(n players - repeat)</i></p>
+          <ol>
+            <li>Player votes for best haiku</li>
+            <li>Award point</li>
+          </ol>
+        </li>
+        <li>End round</li>
+        <li>Cleanup, remove icons and words from allowed lists</li>
+      </ol>
+    </li>
+    <li>End match</li>
+    <li>match cleanup, reset all data</li>
+  </ol>
+  
   <h2>Data models</h2>
+  
   <h3>GameConfigModel</h3>
   <pre>
-  <code>
-  [
-    {
-      players: Int,
-      icons: Int=2,
-      maxPlayerWords: Int=2,
-      pointsToWin: Int=7,
-      timerInSeconds: Int=60,
-      icons: Array[IconsModel],
-      words: Array[WordModel]
-    }
-  ]
-  </code>
+    <code>
+    [
+      {
+        players: Int,
+        icons: Int=2,
+        maxPlayerWords: Int=2,
+        pointsToWin: Int=7,
+        timerInSeconds: Int=60,
+        icons: Array[IconsModel],
+        words: Array[WordModel]
+      }
+    ]
+    </code>
   </pre>
+  
   <h3>MessageActionModel</h3>
   <pre>
-  <code>
-    {
-      action: String,
-      data: Json
-    }
-  </code>
+    <code>
+      {
+        action: String,
+        data: Json
+      }
+    </code>
   </pre>
+  
   <h3>HostMessageModel</h3>
   <pre>
-  <code>
-    {
-      id: String,
-      actions: Array[MessageActionModel]
-    }
-  </code>
+    <code>
+      {
+        id: String,
+        actions: Array[MessageActionModel]
+      }
+    </code>
   </pre>
+  
   <h3>ClientMessageModel</h3>
   <pre>
-  <code>
-    {
-      id: String,
-      actions: Array[MessageActionModel]
-    }
-  </code>
+    <code>
+      {
+        id: String,
+        actions: Array[MessageActionModel]
+      }
+    </code>
   </pre>
+  
   <h3>MessageReceivedModel</h3>
   <pre>
-  <code>
-    {
-      id: String
-    }
-  </code>
+    <code>
+      {
+        id: String
+      }
+    </code>
   </pre>
+
+  <h3>GameFlowActionModel</h3>
+    <pre>
+    <code>
+      {
+        function: String
+      }
+    </code>
+  </pre>
+  
+  <h3>HostProgressActionModel</h3>
+    <pre>
+    <code>
+      {
+        messagesReceived: Array[MessageReceivedModel],
+        gameFlowAction: GameFlowActionModel,
+      }
+    </code>
+  </pre>
+  
   <h3>PlayerModel</h3>
   <pre>
-  <code>
-  {
-    name: String,
-    id: String,
-    points: Int,
-    haikus: Array[HaikuModel]
-  }
-  </code>
+    <code>
+      {
+        name: String,
+        id: String,
+        points: Int,
+        haikus: Array[HaikuModel]
+      }
+    </code>
   </pre>
+  
   <h3>RoundModel</h3>
   <pre>
-  <code>
-  {
-    round: Int
-  }
-  </code>
+    <code>
+      {
+        round: Int,
+        remainingIcons: Array[IconModel],
+        remainingWords: Array[WordModel]
+      }
+    </code>
   </pre>
+  
   <h3>MatchModel</h3>
   <pre>
-  <code>
-  {
-    gameConfig: GameConfigModel
-    players: [PlayerModel],
-    rounds: [RoundModel]
-  }
-  </code>
+    <code>
+      {
+        gameConfig: GameConfigModel
+        players: [PlayerModel],
+        rounds: [RoundModel]
+      }
+    </code>
   </pre>
+  
   <h3>HaikuModel</h3>
   <pre>
-  <code>
-  [
+    <code>
     {
       name: String,
       player: String,
@@ -171,8 +199,8 @@
       words: Array[String],
       playerWords: Array[WordModel],
     }
-  ]
-  </code>
+    </code>
   </pre>
+  
 </body>
 </html>
