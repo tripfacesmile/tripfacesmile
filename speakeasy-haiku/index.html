@@ -78,7 +78,7 @@
     <li>match cleanup, reset all data</li>
   </ol>
   
-  <h2>Data models</h2>
+  <h2>Game Data Models</h2>
   
   <h3>GameConfigModel</h3>
   <pre>
@@ -94,64 +94,6 @@
         words: Array[WordModel]
       }
     ]
-    </code>
-  </pre>
-  
-  <h3>MessageActionModel</h3>
-  <pre>
-    <code>
-      {
-        action: String,
-        data: Json
-      }
-    </code>
-  </pre>
-  
-  <h3>HostMessageModel</h3>
-  <pre>
-    <code>
-      {
-        id: String,
-        actions: Array[MessageActionModel]
-      }
-    </code>
-  </pre>
-  
-  <h3>ClientMessageModel</h3>
-  <pre>
-    <code>
-      {
-        id: String,
-        actions: Array[MessageActionModel]
-      }
-    </code>
-  </pre>
-  
-  <h3>MessageReceivedModel</h3>
-  <pre>
-    <code>
-      {
-        id: String
-      }
-    </code>
-  </pre>
-
-  <h3>GameFlowActionModel</h3>
-    <pre>
-    <code>
-      {
-        function: String
-      }
-    </code>
-  </pre>
-  
-  <h3>HostProgressActionModel</h3>
-    <pre>
-    <code>
-      {
-        messagesReceived: Array[MessageReceivedModel],
-        gameFlowAction: GameFlowActionModel,
-      }
     </code>
   </pre>
   
@@ -199,6 +141,57 @@
       words: Array[String],
       playerWords: Array[WordModel],
     }
+    </code>
+  </pre>
+
+  <h2>Communcation Models</h2>
+  <h3>MessageActionModel</h3>
+  <pre>
+    <code>
+      {
+        action: String, # Action to call, wil be a function. Both host and client will know how to read this.
+        data: Json # Data for action
+      }
+    </code>
+  </pre>
+  
+  <h3>HostMessageModel</h3>
+  <pre>
+    <code>
+      {
+        id: String,
+        actions: Array[MessageActionModel] # Actions for host to call
+      }
+    </code>
+  </pre>
+  
+  <h3>ClientMessageModel</h3>
+  <pre>
+    <code>
+      {
+        id: String, # Send same ID back to host as MessageReceivedModel
+        actions: Array[MessageActionModel] # Actions for client to call
+      }
+    </code>
+  </pre>
+  
+  <h3>MessageReceivedModel</h3>
+  <pre>
+    <code>
+      {
+        id: String 3 Indicates the previous message was execute successfully by receiving party. 
+      }
+    </code>
+  </pre>
+  
+  <h3>HostProgressActionModel</h3>
+    <pre>
+    <code>
+      {
+        messagesSent: Array[ClientMessageModel],
+        messagesReceived: Array[MessageReceivedModel],
+        action: String, # Host pgression action to call when all messages were recieved from clients
+      }
     </code>
   </pre>
   
