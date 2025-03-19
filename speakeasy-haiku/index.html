@@ -79,24 +79,6 @@
   </ol>
   
   <h2>Game Data Models</h2>
-  
-  <h3>GameConfigModel</h3>
-  <pre>
-    <code>
-    [
-      {
-        players: Int,
-        icons: Int=2,
-        maxPlayerWords: Int=2,
-        pointsToWin: Int=7,
-        timerInSeconds: Int=60,
-        icons: Array[IconsModel],
-        words: Array[WordModel]
-      }
-    ]
-    </code>
-  </pre>
-
 
   <h3>MatchModel</h3>
   <pre>
@@ -197,6 +179,82 @@
         messagesReceived: Array[MessageReceivedModel],
         action: String, # Host pgression action to call when all messages were recieved from clients
       }
+    </code>
+  </pre>
+
+  <h2>Static Data Models</h2>
+
+  <h3>GameConfigModel</h3>
+  <pre>
+    <code>
+    [
+      {
+        players: Int=2,
+        iconsEachRound: Int=2,
+        playerWordsEachRound: Int=2,
+        pointsToWin: Int=7,
+        timerInSeconds: Int=60,
+        icons: IconCollectionModel,
+        words: WordCollectionModel
+      },
+      {
+        players: Int=3,
+        iconsEachRound: Int=2,
+        playerWordsEachRound: Int=2,
+        pointsToWin: Int=7,
+        timerInSeconds: Int=60,
+        icons: IconCollectionModel,
+        words: WordCollectionModel
+      },
+      {
+        players: Int=4,
+        iconsEachRound: Int=2,
+        playerWordsEachRound: Int=2,
+        pointsToWin: Int=7,
+        timerInSeconds: Int=60,
+        icons: IconCollectionModel,
+        words: WordCollectionModel
+      },
+      {
+        players: Int=5,
+        iconsEachRound: Int=2,
+        playerWordsEachRound: Int=2,
+        pointsToWin: Int=7,
+        timerInSeconds: Int=60,
+        icons: IconCollectionModel,
+        words: WordCollectionModel
+      },
+      {
+        players: Int=6,
+        iconsEachRound: Int=2,
+        playerWordsEachRound: Int=2,
+        pointsToWin: Int=7,
+        timerInSeconds: Int=60,
+        icons: IconCollectionModel,
+        words: WordCollectionModel
+      }
+    ]
+    </code>
+  </pre>
+  
+  <h3>IconCollectionModel</h3>
+  <pre>
+    <code>
+    {
+      name: String,
+      icons: Array[]
+    }
+    </code>
+  </pre>
+
+  <h3>WordCollectionModel</h3>
+  <pre>
+    <code>
+    {
+      name: String,
+      language: String,
+      words: Array[]
+    }
     </code>
   </pre>
   
