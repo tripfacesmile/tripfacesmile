@@ -105,6 +105,13 @@
       }
     </code>
   </pre>
+
+  <h3>UserTypeEnum</h3>
+  <pre>
+    <code>
+      [Host, Client]
+    </code>
+  </pre>
   
   <h3>PlayerModel</h3>
   <pre>
@@ -112,6 +119,8 @@
       {
         name: String,
         id: String,
+        type: UserTypeEnum,
+        actions: Array[MessageActionModel]
         points: Int,
         haikus: Array[HaikuModel]
       }
@@ -151,6 +160,7 @@
   <pre>
     <code>
       {
+        type: UserTypeEnum
         action: String, # Action to call, wil be a function. Both host and client will know how to read this.
         data: Json # Data for action
       }
@@ -245,7 +255,11 @@
         playerWordsEachRound: Int=2,
         pointsToWin: Int=7,
         timerInSeconds: Int=60,
-        icons: IconCollectionModel,
+        iname: ,
+        id: String,
+        type: 
+        points: Int,
+        haikus: Array[HaikuModel]cons: IconCollectionModel,
         words: WordCollectionModel
       }
     ]
