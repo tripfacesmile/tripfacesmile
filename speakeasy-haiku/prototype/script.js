@@ -60,9 +60,7 @@ drone.on('open', error => {
     }
     // If we are the second user to connect to the room we will be creating the offer
     const isOfferer = members.length === 2;
-    if (members.length <= 2) {
-      startWebRTC(isOfferer);
-    }
+    startWebRTC(isOfferer);
   });
 });
 
