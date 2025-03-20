@@ -47,6 +47,11 @@ drone.on('open', error => {
     }
     console.log('Connected to signaling server');
   });
+  room.on('member_join', function(member) {
+  // Member object
+    console.log("member joined");
+    console.log(member);
+  });
   // We're connected to the room and received an array of 'members'
   // connected to the room (including us). Signaling server is ready.
   room.on('members', members => {
