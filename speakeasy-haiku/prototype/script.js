@@ -151,7 +151,7 @@ function startWebRTC2(isOfferer) {
     pc2.onnegotiationneeded = () => {
       pc2.createOffer(localDescCreated, error => console.error(error));
     }
-    dataChannel2 = pc.createDataChannel('chat');
+    dataChannel2 = pc2.createDataChannel('chat');
     setupDataChannel2();
   } else {
     // If user is not the offerer let wait for a data channel
@@ -193,17 +193,17 @@ function startListentingToSignals() {
     }
     if (message.sdp) {
       // This is called after receiving an offer or answer from another peer
-      pc.setRemoteDescription(new RTCSessionDescription(message.sdp), () => {
-        console.log('pc.remoteDescription.type', pc.remoteDescription.type);
+      pc2.setRemoteDescription(new RTCSessionDescription(message.sdp), () => {
+        console.log('pc2.remoteDescription.type', pc2.remoteDescription.type);
         // When receiving an offer lets answer it
-        if (pc.remoteDescription.type === 'offer') {
+        if (pc2.remoteDescription.type === 'offer') {
           console.log('Answering offer');
-          pc.createAnswer(localDescCreated, error => console.error(error));
+          pc2.createAnswer(localDescCreated, error => console.error(error));
         }
       }, error => console.error(error));
     } else if (message.candidate) {
       // Add the new ICE candidate to our connections remote description
-      pc.addIceCandidate(new RTCIceCandidate(message.candidate));
+      pc2.addIceCandidate(new RTCIceCandidate(message.candidate));
     }
   });
 }
@@ -212,6 +212,11 @@ function localDescCreated(desc) {
   pc.setLocalDescription(
     desc,
     () => sendSignalingMessage({'sdp': pc.localDescription}),
+    error => console.error(error)
+  );
+  pc2.setLocalDescription(
+    desc,
+    () => sendSignalingMessage({'sdp': pc2.localDescription}),
     error => console.error(error)
   );
 }
