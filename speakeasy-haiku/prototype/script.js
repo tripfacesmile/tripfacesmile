@@ -149,7 +149,7 @@ function startWebRTC2(isOfferer) {
   if (isOfferer) {
     // If user is offerer let them create a negotiation offer and set up the data channel
     pc2.onnegotiationneeded = () => {
-      pc2.createOffer(localDescCreated, error => console.error(error));
+      pc2.createOffer(localDescCreated2, error => console.error(error));
     }
     dataChannel2 = pc2.createDataChannel('chat');
     setupDataChannel2();
@@ -198,7 +198,7 @@ function startListentingToSignals() {
         // When receiving an offer lets answer it
         if (pc2.remoteDescription.type === 'offer') {
           console.log('Answering offer');
-          pc2.createAnswer(localDescCreated, error => console.error(error));
+          pc2.createAnswer(localDescCreated2, error => console.error(error));
         }
       }, error => console.error(error));
     } else if (message.candidate) {
@@ -214,6 +214,9 @@ function localDescCreated(desc) {
     () => sendSignalingMessage({'sdp': pc.localDescription}),
     error => console.error(error)
   );
+}
+
+function localDescCreated2(desc) {
   pc2.setLocalDescription(
     desc,
     () => sendSignalingMessage({'sdp': pc2.localDescription}),
