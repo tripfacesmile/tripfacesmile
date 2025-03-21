@@ -293,9 +293,12 @@ form.addEventListener('submit', () => {
     content: value,
     emoji,
   };
-
-  dataChannel.send(JSON.stringify(data));
-  dataChannel2.send(JSON.stringify(data));
+  if(typeof dataChannel !== "undefined"){
+    dataChannel.send(JSON.stringify(data));
+  }
+  if(typeof dataChannel2 !== "undefined"){
+    dataChannel2.send(JSON.stringify(data));
+  }
 
   insertMessageToDOM(data, true);
 });
