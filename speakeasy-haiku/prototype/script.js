@@ -25,6 +25,7 @@ const drone2 = new ScaleDrone('5VhpOmMNWH79aZcJ');
 const roomName = 'observable-' + chatHash;
 // Scaledrone room used for signaling
 let room;
+let room2;
 
 const configuration = {
   iceServers: [{
@@ -58,8 +59,8 @@ drone.on('open', error => {
         if (error) {
           return console.error(error);
         }
-        room = drone2.subscribe(roomName);
-        room.on('open', error => {
+        room2 = drone2.subscribe(roomName);
+        room2.on('open', error => {
           if (error) {
             return console.error(error);
           }
@@ -67,7 +68,7 @@ drone.on('open', error => {
         });
         // We're connected to the room and received an array of 'members'
         // connected to the room (including us). Signaling server is ready.
-        room.on('members', members => {
+        room2.on('members', members => {
           if (members.length >= 3) {
             console.log("client connection 2 was taken");
             return;
@@ -92,7 +93,7 @@ function sendSignalingMessage(message) {
     message
   });
   drone2.publish({
-    room: roomName,
+    room2: roomName,
     message
   });
 }
@@ -132,7 +133,27 @@ function startListentingToSignals() {
   // Listen to signaling data from Scaledrone
   room.on('data', (message, client) => {
     // Message was sent by us
-    if (client.id === drone.clientId || client.id === drone2.clientId) {
+    if (client.id === drone.clientId) {
+      return;
+    }
+    if (message.sdp) {
+      // This is called after receiving an offer or answer from another peer
+      pc.setRemoteDescription(new RTCSessionDescription(message.sdp), () => {
+        console.log('pc.remoteDescription.type', pc.remoteDescription.type);
+        // When receiving an offer lets answer it
+        if (pc.remoteDescription.type === 'offer') {
+          console.log('Answering offer');
+          pc.createAnswer(localDescCreated, error => console.error(error));
+        }
+      }, error => console.error(error));
+    } else if (message.candidate) {
+      // Add the new ICE candidate to our connections remote description
+      pc.addIceCandidate(new RTCIceCandidate(message.candidate));
+    }
+  });
+  room2.on('data', (message, client) => {
+    // Message was sent by us
+    if (client.id === drone2.clientId) {
       return;
     }
     if (message.sdp) {
