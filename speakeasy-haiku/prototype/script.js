@@ -161,7 +161,7 @@ function startWebRTC2(isOfferer) {
     }
   }
 
-  startListentingToSignals();
+  startListentingToSignals2();
 }
 
 function startListentingToSignals() {
@@ -186,6 +186,10 @@ function startListentingToSignals() {
       pc.addIceCandidate(new RTCIceCandidate(message.candidate));
     }
   });
+}
+
+function startListentingToSignals2() {
+  // Listen to signaling data from Scaledrone
   room2.on('data', (message, client) => {
     // Message was sent by us
     if (client.id === drone2.clientId) {
