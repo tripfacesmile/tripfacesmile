@@ -51,7 +51,7 @@ drone.on('open', error => {
     if (error) {
       return console.error(error);
     }
-    console.log('Connected to signaling server');
+    console.log('Connected to signaling server 1');
   });
   // We're connected to the room and received an array of 'members'
   // connected to the room (including us). Signaling server is ready.
@@ -64,6 +64,10 @@ drone.on('open', error => {
     // If we are the second user to connect to the room we will be creating the offer
     const isOfferer = members.length === 2;
     startWebRTC(isOfferer);
+    if (isOfferer == false) {
+      console.log("calling startWebRTC2 as waiter");
+      startWebRTC2(isOfferer);
+    }
   });
 });
 
@@ -78,7 +82,7 @@ function letsGoDrone2(){
       if (error) {
         return console.error(error);
       }
-      console.log('Connected to signaling server');
+      console.log('Connected to signaling server 2');
     });
     // We're connected to the room and received an array of 'members'
     // connected to the room (including us). Signaling server is ready.
