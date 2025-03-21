@@ -59,15 +59,19 @@ drone.on('open', error => {
     if (members.length >= 3) {
       console.log("client connection 1 was taken, lets go client connection 2");
       // TODO set some global vars here to track this.
+      letsGoDrone2();
       return;
     }
     // If we are the second user to connect to the room we will be creating the offer
     const isOfferer = members.length === 2;
     startWebRTC(isOfferer);
+    if(isOfferer == false){
+      letsGoDrone2();
+    }
   });
 });
 
-letsGoDrone2();
+// letsGoDrone2();
 function letsGoDrone2(){
   // Wait for Scaledrone signalling server to connect
   drone2.on('open', error => {
