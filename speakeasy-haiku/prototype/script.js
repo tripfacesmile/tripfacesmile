@@ -65,7 +65,8 @@ drone.on('open', error => {
     // If we are the second user to connect to the room we will be creating the offer
     const isOfferer = members.length === 2;
     startWebRTC(isOfferer);
-    if(isOfferer == false){
+    if(members.length === 1){
+      console.log("Only 1 member of 1 connection, calling letsGoDrone2");
       letsGoDrone2();
     }
   });
@@ -73,6 +74,7 @@ drone.on('open', error => {
 
 // letsGoDrone2();
 function letsGoDrone2(){
+  console.log("letsGoDrone2 called");
   // Wait for Scaledrone signalling server to connect
   drone2.on('open', error => {
     if (error) {
