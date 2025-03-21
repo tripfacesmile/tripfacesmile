@@ -19,7 +19,7 @@ if (!location.hash) {
 const chatHash = location.hash.substring(1);
 
 // TODO: Replace with your own channel ID
-const drone = new ScaleDrone('413NQfP8n90K4gvD');
+const drone = new ScaleDrone('yiS12Ts5RdNhebyM');
 // Scaledrone room name needs to be prefixed with 'observable-'
 const roomName = 'observable-' + chatHash;
 // Scaledrone room used for signaling
@@ -47,15 +47,10 @@ drone.on('open', error => {
     }
     console.log('Connected to signaling server');
   });
-  room.on('member_join', function(member) {
-  // Member object
-    console.log("member joined");
-    console.log(member);
-  });
   // We're connected to the room and received an array of 'members'
   // connected to the room (including us). Signaling server is ready.
   room.on('members', members => {
-    if (members.length > 6) {
+    if (members.length >= 3) {
       return alert('The room is full');
     }
     // If we are the second user to connect to the room we will be creating the offer
