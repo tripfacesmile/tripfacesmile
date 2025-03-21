@@ -240,8 +240,8 @@ function setupDataChannel() {
 // Hook up data channel event handlers
 function setupDataChannel2() {
   checkDataChannelState2();
-  dataChannel2.onopen = checkDataChannelState;
-  dataChannel2.onclose = checkDataChannelState;
+  dataChannel2.onopen = checkDataChannelState2;
+  dataChannel2.onclose = checkDataChannelState2;
   dataChannel2.onmessage = event =>
     insertMessageToDOM(JSON.parse(event.data), false)
 }
