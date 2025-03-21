@@ -70,7 +70,6 @@ drone.on('open', error => {
 letsGoDrone2();
 function letsGoDrone2(){
   // Wait for Scaledrone signalling server to connect
-  Timber.d("letsGoDrone2 called");
   drone2.on('open', error => {
     if (error) {
       return console.error(error);
