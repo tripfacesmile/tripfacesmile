@@ -36,6 +36,10 @@ const configuration = {
 let pc;
 // RTCDataChannel
 let dataChannel;
+// RTCPeerConnection
+let pc2;
+// RTCDataChannel
+let dataChannel2;
 
 // Wait for Scaledrone signalling server to connect
 drone.on('open', error => {
@@ -75,7 +79,7 @@ drone.on('open', error => {
           }
           // If we are the second user to connect to the room we will be creating the offer
           const isOfferer = members.length === 2;
-          startWebRTC(isOfferer);
+          startWebRTC2(isOfferer);
         });
       });
       return;
@@ -123,6 +127,37 @@ function startWebRTC(isOfferer) {
     pc.ondatachannel = event => {
       dataChannel = event.channel;
       setupDataChannel();
+    }
+  }
+
+  startListentingToSignals();
+}
+
+function startWebRTC2(isOfferer) {
+  console.log('Starting WebRTC in as', isOfferer ? 'offerer' : 'waiter');
+  pc2 = new RTCPeerConnection(configuration);
+
+  // 'onicecandidate' notifies us whenever an ICE agent needs to deliver a
+  // message to the other peer through the signaling server
+  pc2.onicecandidate = event => {
+    if (event.candidate) {
+      sendSignalingMessage({'candidate': event.candidate});
+    }
+  };
+
+
+  if (isOfferer) {
+    // If user is offerer let them create a negotiation offer and set up the data channel
+    pc2.onnegotiationneeded = () => {
+      pc2.createOffer(localDescCreated, error => console.error(error));
+    }
+    dataChannel2 = pc.createDataChannel('chat');
+    setupDataChannel2();
+  } else {
+    // If user is not the offerer let wait for a data channel
+    pc2.ondatachannel = event => {
+      dataChannel2 = event.channel;
+      setupDataChannel2();
     }
   }
 
@@ -190,10 +225,23 @@ function setupDataChannel() {
     insertMessageToDOM(JSON.parse(event.data), false)
 }
 
+// Hook up data channel event handlers
+function setupDataChannel2() {
+  checkDataChannelState();
+  dataChannel2.onopen = checkDataChannelState;
+  dataChannel2.onclose = checkDataChannelState;
+  dataChannel2.onmessage = event =>
+    insertMessageToDOM(JSON.parse(event.data), false)
+}
+
 function checkDataChannelState() {
-  console.log('WebRTC channel state is:', dataChannel.readyState);
+  console.log('WebRTC channel 1 state is:', dataChannel.readyState);
   if (dataChannel.readyState === 'open') {
-    insertMessageToDOM({content: 'WebRTC data channel is now open'});
+    insertMessageToDOM({content: 'WebRTC data channel 1 is now open'});
+  }
+    console.log('WebRTC channel 2 state is:', dataChannel2.readyState);
+  if (dataChannel2.readyState === 'open') {
+    insertMessageToDOM({content: 'WebRTC data channel 2 is now open'});
   }
 }
 
@@ -232,6 +280,7 @@ form.addEventListener('submit', () => {
   };
 
   dataChannel.send(JSON.stringify(data));
+  dataChannel2.send(JSON.stringify(data));
 
   insertMessageToDOM(data, true);
 });
