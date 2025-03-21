@@ -111,7 +111,7 @@ function sendSignalingMessage2(message) {
 }
 
 function startWebRTC(isOfferer) {
-  console.log('Starting WebRTC in as', isOfferer ? 'offerer' : 'waiter');
+  console.log('Starting WebRTC #1 in as', isOfferer ? 'offerer' : 'waiter');
   pc = new RTCPeerConnection(configuration);
 
   // 'onicecandidate' notifies us whenever an ICE agent needs to deliver a
