@@ -96,6 +96,10 @@ function sendSignalingMessage(message) {
     room: roomName,
     message
   });
+}
+
+// Send signaling data via Scaledrone
+function sendSignalingMessage2(message) {
   drone2.publish({
     room2: roomName,
     message
@@ -141,7 +145,7 @@ function startWebRTC2(isOfferer) {
   // message to the other peer through the signaling server
   pc2.onicecandidate = event => {
     if (event.candidate) {
-      sendSignalingMessage({'candidate': event.candidate});
+      sendSignalingMessage2({'candidate': event.candidate});
     }
   };
 
