@@ -57,31 +57,8 @@ drone.on('open', error => {
   // connected to the room (including us). Signaling server is ready.
   room.on('members', members => {
     if (members.length >= 3) {
-      console.log("client connection 1 was taken");
-      // Wait for Scaledrone signalling server to connect
-      drone2.on('open', error => {
-        if (error) {
-          return console.error(error);
-        }
-        room2 = drone2.subscribe(roomName);
-        room2.on('open', error => {
-          if (error) {
-            return console.error(error);
-          }
-          console.log('Connected to signaling server');
-        });
-        // We're connected to the room and received an array of 'members'
-        // connected to the room (including us). Signaling server is ready.
-        room2.on('members', members => {
-          if (members.length >= 3) {
-            console.log("client connection 2 was taken");
-            return;
-          }
-          // If we are the second user to connect to the room we will be creating the offer
-          const isOfferer = members.length === 2;
-          startWebRTC2(isOfferer);
-        });
-      });
+      console.log("client connection 1 was taken, lets go client connection 2");
+      letsGoDrone2();
       return;
     }
     // If we are the second user to connect to the room we will be creating the offer
@@ -89,6 +66,33 @@ drone.on('open', error => {
     startWebRTC(isOfferer);
   });
 });
+
+function letsGoDrone2(){
+  // Wait for Scaledrone signalling server to connect
+  drone2.on('open', error => {
+    if (error) {
+      return console.error(error);
+    }
+    room2 = drone2.subscribe(roomName);
+    room2.on('open', error => {
+      if (error) {
+        return console.error(error);
+      }
+      console.log('Connected to signaling server');
+    });
+    // We're connected to the room and received an array of 'members'
+    // connected to the room (including us). Signaling server is ready.
+    room2.on('members', members => {
+      if (members.length >= 3) {
+        console.log("client connection 2 was taken");
+        return;
+      }
+      // If we are the second user to connect to the room we will be creating the offer
+      const isOfferer = members.length === 2;
+      startWebRTC2(isOfferer);
+    });
+  });
+}
 
 // Send signaling data via Scaledrone
 function sendSignalingMessage(message) {
@@ -138,7 +142,7 @@ function startWebRTC(isOfferer) {
 }
 
 function startWebRTC2(isOfferer) {
-  console.log('Starting WebRTC in as', isOfferer ? 'offerer' : 'waiter');
+  console.log('Starting WebRTC #2 in as', isOfferer ? 'offerer' : 'waiter');
   pc2 = new RTCPeerConnection(configuration);
 
   // 'onicecandidate' notifies us whenever an ICE agent needs to deliver a
