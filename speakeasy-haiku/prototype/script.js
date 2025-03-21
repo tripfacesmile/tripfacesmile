@@ -19,7 +19,8 @@ if (!location.hash) {
 const chatHash = location.hash.substring(1);
 
 // TODO: Replace with your own channel ID
-const drone = new ScaleDrone('5VhpOmMNWH79aZcJ');
+const drone = new ScaleDrone('JVoQlf5w3iv0HWNB');
+const drone2 = new ScaleDrone('5VhpOmMNWH79aZcJ');
 // Scaledrone room name needs to be prefixed with 'observable-'
 const roomName = 'observable-' + chatHash;
 // Scaledrone room used for signaling
@@ -59,9 +60,37 @@ drone.on('open', error => {
   });
 });
 
+// Wait for Scaledrone signalling server to connect
+drone2.on('open', error => {
+  if (error) {
+    return console.error(error);
+  }
+  room = drone2.subscribe(roomName);
+  room.on('open', error => {
+    if (error) {
+      return console.error(error);
+    }
+    console.log('Connected to signaling server');
+  });
+  // We're connected to the room and received an array of 'members'
+  // connected to the room (including us). Signaling server is ready.
+  room.on('members', members => {
+    if (members.length >= 3) {
+      return alert('The room is full');
+    }
+    // If we are the second user to connect to the room we will be creating the offer
+    const isOfferer = members.length === 2;
+    startWebRTC(isOfferer);
+  });
+});
+
 // Send signaling data via Scaledrone
 function sendSignalingMessage(message) {
   drone.publish({
+    room: roomName,
+    message
+  });
+  drone2.publish({
     room: roomName,
     message
   });
@@ -102,7 +131,7 @@ function startListentingToSignals() {
   // Listen to signaling data from Scaledrone
   room.on('data', (message, client) => {
     // Message was sent by us
-    if (client.id === drone.clientId) {
+    if (client.id === drone.clientId || client.id === drone2.clientId) {
       return;
     }
     if (message.sdp) {
