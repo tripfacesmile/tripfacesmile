@@ -239,7 +239,7 @@ function setupDataChannel() {
 
 // Hook up data channel event handlers
 function setupDataChannel2() {
-  checkDataChannelState();
+  checkDataChannelState2();
   dataChannel2.onopen = checkDataChannelState;
   dataChannel2.onclose = checkDataChannelState;
   dataChannel2.onmessage = event =>
@@ -251,7 +251,10 @@ function checkDataChannelState() {
   if (dataChannel.readyState === 'open') {
     insertMessageToDOM({content: 'WebRTC data channel 1 is now open'});
   }
-    console.log('WebRTC channel 2 state is:', dataChannel2.readyState);
+}
+
+function checkDataChannelState2() {
+  console.log('WebRTC channel 2 state is:', dataChannel2.readyState);
   if (dataChannel2.readyState === 'open') {
     insertMessageToDOM({content: 'WebRTC data channel 2 is now open'});
   }
