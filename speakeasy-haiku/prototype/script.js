@@ -112,7 +112,7 @@ function sendSignalingMessage(message) {
 // Send signaling data via Scaledrone
 function sendSignalingMessage2(message) {
   drone2.publish({
-    room2: roomName,
+    room: roomName,
     message
   });
 }
