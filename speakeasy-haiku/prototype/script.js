@@ -58,15 +58,15 @@ drone.on('open', error => {
   room.on('members', members => {
     if (members.length >= 3) {
       console.log("client connection 1 was taken, lets go client connection 2");
-      letsGoDrone2();
+      // TODO set some global vars here to track this.
       return;
     }
     // If we are the second user to connect to the room we will be creating the offer
     const isOfferer = members.length === 2;
     startWebRTC(isOfferer);
     if (isOfferer == false) {
-      console.log("calling startWebRTC2 as waiter");
-      startWebRTC2(isOfferer);
+      console.log("calling letsGoDrone2");
+      letsGoDrone2();
     }
   });
 });
