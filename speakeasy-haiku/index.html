@@ -90,14 +90,15 @@
 
   <h2>Game flow actions</h2>
   <ol>
-    <li>HostCreateGame - <b style="color:red">1. Title screen - Button #1</b></li>
-    <li>HostGenerateRoomKey - <b style="color:red">1. Title screen - Textfield #1</b></li>
-    <li>ClientEnterGame</li>
-    <li>ClientPlayerJoined</li>
-    <li>HostStartGame</li>
-    <li>HostStartMatch</li>
-    <li>HostDetermineMatchWinner</li>
-    <li>ClientMatchWinnerDisplayed</li>
+    <li>HostCreateGame - <b style="color:purple">1. Title screen - Button #1 (Create Game)</b></li>
+    <li>HostGenerateRoomKey - <b style="color:purple">1. Title screen - Textfield #1</b></li>
+    <li>ClientEnterRoomKey - <b style="color:purple">1. Title screen - Textfield #1</b></li>
+    <li>ClientEnterGame - <b style="color:red">2. Lobby screen - Text List</b></li>
+    <li>HostEventClientPlayerJoined - <b style="color:red">2. Lobby screen - Text List</b></li>
+    <li>HostStartGame - <b style="color:red">2. Lobby screen - Button #2 (Start Game)</b></li>
+    <li>ClientEventHostStartMatch - <b>No Screen, transition event</b></li>
+    <li>HostDetermineMatchWinner - <b>No screen, transition event</b></li>
+    <li>PlayerEventMatchWinnerDisplayed - <b style="color:orange">3. Winner screen - Game/player data</b></li>
     <li>HostStartRound</li>
     <li>ClientPlayerFinished</li>
     <li>HostTimerStarted</li>
