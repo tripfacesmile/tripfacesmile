@@ -90,21 +90,31 @@
 
   <h2>Game flow actions</h2>
   <ol>
-    <li>HostCreateGame - <b style="color:purple;">1. Title screen - Button #1 (Create Game)</b></li>
-    <li>HostGenerateRoomKey - <b style="color:purple;">1. Title screen - Textfield #1</b></li>
-    <li>ClientEnterRoomKey - <b style="color:purple;">1. Title screen - Textfield #1</b></li>
-    <li>ClientEnterGame - <b style="color:red;">2. Lobby screen - Text List</b></li>
-    <li>HostEventClientPlayerJoined - <b style="color:red;">2. Lobby screen - Text List</b></li>
-    <li>HostStartGame - <b style="color:red;">2. Lobby screen - Button #2 (Start Game)</b></li>
+    <li>HostCreateGame - <b style="color:purple;">1. Title screen - Button (Create Game)</b></li>
+    <li>HostGenerateRoomKey - <b style="color:purple;">1. Title screen - Textfield (Share room key)</b></li>
+    <li>ClientEnterRoomKey - <b style="color:purple;">1. Title screen - Textfield (Enter room key)</b></li>
+    <li>ClientEnterGame - <b style="color:red;">2. Lobby screen - Text List (Of users)</b></li>
+    <li>HostEventClientPlayerJoined - <b style="color:red;">2. Lobby screen - Text List (Of users)</b></li>
+    <li>HostStartGame - <b style="color:red;">2. Lobby screen - Button (Start Game)</b></li>
     <li>ClientEventHostStartMatch - <b>No Screen, transition event</b></li>
     <li>HostDetermineMatchWinner - <b>No screen, transition event</b></li>
     <li>PlayerEventMatchWinnerDisplayed - <b style="color:orange;">3. Winner screen - Game/player data</b></li>
-    <li>HostStartRound</li>
-    <li>ClientPlayerFinished</li>
-    <li>HostTimerStarted</li>
-    <li>ClientTimerFinished</li>
-    <li>HostAllTimersFinished</li>
-    <li>HostAllPlayersFinished</li>
+    <li>PlayerEventStartRound - <b>No screen, transition event</b></li>
+    <li>PlayerEvent... - <b>More steps here, like choosing icon, and delegating out player words, no screen though</b></li>
+    <li>PlayerEventWriteHaiku - <b style="color:orange;">4. Write Haiku screen - Textbox</b></li> 
+    <li>ClientEventPlayerFinished - <b>No screen, transition event</b></li>
+    <li>HostTimerStarted - <b style="color:orange;">4. Write Haiku screen - Timer</b></li>
+    <li>ClientTimerFinished - <b style="color:orange;">4. Write Haiku screen - Disables Textbox</b></li>
+    <li>HostAllTimersFinished - <b>No screen, transition event</b></li>
+    <li>HostAllPlayersFinished - <b>No screen, transition event</b></li>
+    <li>PlayerEventGuessPhase - <b style="color:yellow;">5. Guess Haiku word screen - Word selection w/ Button (Confirm)</b></li>
+    <li>TBD, more events....</li>
+    <li>PlayerEventGuessPhaseOver - <b>No screen, transition event</b></li>
+    <li>PlayerEventVotePhaseBegins - <b>No screen, transition event</b></li>
+    <li>PlayerEventPlayerVotes - <b style="color:green;">6. Vote best Haiku screen - Carousel style to cycle through Haikus w/ Button (Vote)</b></li>
+    <li>TBD, more events....</li>
+    <li>HostEndMatch - <b style="color:orange;">3. Winner screen - Button (End match)</b></li>
+    <li>PlayerEventMatchCleanup - <b>No screen, transition event</b></li>
   </ol>
   
   <h2>Game Data Models</h2>
